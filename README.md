@@ -1,2 +1,2 @@
 # e-Pharma
-A scale backens system for pharma website
+A scale backend system for pharma website
