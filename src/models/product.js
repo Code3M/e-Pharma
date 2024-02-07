@@ -36,6 +36,9 @@ const productSchema = Schema({
     },
     numberOfStocks:{
         type:Number
+    },
+    image:{
+        type: String
     }
 
 },{timestamps : true})
