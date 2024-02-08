@@ -135,13 +135,16 @@ const removeUser = asyncHandler(async(req,res) =>{
     res.status(200).json(new ApiResponse(200,`${req.user.firstName} Your account deleted successfully`))
 })
 
-// Get User
+// Get AllUser
 const getUser = asyncHandler(async(req,res)=>{
-    const email = req.params.email
     const user = await User.find()
     res.status(200).json(new ApiResponse(200, user))
 })
-
+// Get One User
+const getOneUser = asyncHandler(async(req,res)=>{
+    const user = await User.findById(req.params.id)
+    res.status(200).json(new ApiResponse(200, user))
+})
 
 
 
@@ -152,7 +155,8 @@ export  {
     login,
     logout,
     removeUser,
-    getUser
+    getUser,
+    getOneUser
 
 
 }

@@ -6,7 +6,8 @@ import { userSignUp,
     login,
     logout,
     removeUser,
-    getUser } from "../controllers/userController.js";
+    getUser,
+    getOneUser } from "../controllers/userController.js";
 
 
 const userRouters = Router()
@@ -18,5 +19,6 @@ userRouters.route("/forgot_password").post(verifyJwt, changePassword)
 userRouters.route("/logOut").get(verifyJwt, logout)
 userRouters.route("/deleteAccount").delete(verifyJwt, removeUser)
 userRouters.route("/findUser").get(getUser)
+userRouters.route("/findOneUser/:id").get(getOneUser)
 
 export {userRouters}
