@@ -5,19 +5,20 @@ const productSchema = Schema({
         type:String,
         required:true
     },
-    productId:{
-
+    productSerialNumber:{
+        type:String,
+        unique: true
     },
     price:{
         type:Number,
         required:true
     },
-    productExpiry:{
-        type:String,
+    manufacturingDate:{
+        type:Date, 
         required:true
     },
-    manufacturingDate:{
-        type:String, //need to change to date type
+    productExpiry:{
+        type:Date,
         required:true
     },
     category:{
@@ -38,9 +39,22 @@ const productSchema = Schema({
         type:Number
     },
     image:{
-        type: String
+        imageUrl: {
+            type: String,
+            required: true 
+          },
+          imagePublicId: {
+            type: String,
+            required: true 
+          }
     }
+    
 
 },{timestamps : true})
-
+productSchema.pre('save', async function(next) {
+    const Product = this.constructor;
+    const count = await Product.countDocuments()
+    this.productSerialNumber =  `SN00${count + 1}`;
+    next();
+});
 export const Product = mongoose.model("Product",productSchema)

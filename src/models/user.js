@@ -23,7 +23,8 @@ const userSchema = Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique: true
     },
     password:{
         type:String,
@@ -31,7 +32,8 @@ const userSchema = Schema({
     },
     mobile:{
         type:Number,
-        required:true
+        required:true,
+        unique: true
     },
     role:{
         type:String,
@@ -39,7 +41,8 @@ const userSchema = Schema({
         default:'Buyer'
     },
     gstNo:{
-        type:String
+        type:String,
+        unique: true
     },
     address:{
         city:{
@@ -60,7 +63,7 @@ const userSchema = Schema({
     },
     orderHistory:{
         type:Schema.Types.ObjectId,
-        ref:""
+        ref:"Product"
     },
 
 },
